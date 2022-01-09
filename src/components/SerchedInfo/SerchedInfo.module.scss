@@ -1,0 +1,13 @@
+.searchResult{
+    font-weight: 500;
+    font-size: 1.5rem;
+    span{
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 400px){
+    .searchResult{
+        font-size: 18px;
+    }
+}

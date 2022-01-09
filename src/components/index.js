@@ -1,0 +1,7 @@
+export {default as Header} from './Header/Header'
+export {default as Spinner} from './Spinner/Spinner'
+export {default as NotSearch} from './NotSearch/NotSearch'
+export {default as FilmList} from './FilmList/FilmList'
+export {default as FilmCard} from './FilmCard/FilmCard'
+export {default as SerchedInfo} from './SerchedInfo/SerchedInfo'
+export {default as Pagination} from './Pagination/Pagination'

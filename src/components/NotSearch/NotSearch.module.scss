@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 45px ;
+    height: 90%;
+    span{
+        font-weight: 900;
+        color: #00BFFF;
+    }
+}
+
+@media (max-width: 700px ){
+    .container{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 420px ){
+    .container{
+        font-size: 18px;
+    }
+}

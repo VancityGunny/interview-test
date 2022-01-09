@@ -1,0 +1,15 @@
+.wrapper{
+    margin-top: 20px;
+    height: auto;
+    .filmLists{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-rows: auto;
+        grid-gap: 25px;
+        .cardLink{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
