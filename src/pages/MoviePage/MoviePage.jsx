@@ -18,7 +18,7 @@ const MoviePage = () => {
     
     const tabHandler = async (tab) => {
         setPage(tab)
-        const data = await api(searchInputValue, page)
+        const data = await api(searchInputValue, tab)
         setData(data)
     }
 
@@ -33,6 +33,12 @@ const MoviePage = () => {
 
     }
 
+    const searchHandler = async () => {
+        const data = await api(searchInputValue, page)
+        filmName.current = searchInputValue
+        setData(data)
+    }
+
     return (
         <>
             <Header 
@@ -40,6 +46,7 @@ const MoviePage = () => {
                 inputChangeHandler = {changeHandler}
                 inputSubmitHandler={submitHandler}
                 inlutValue = {searchInputValue}
+                btnHandler={searchHandler}
             />
             <FilmList 
                 data={data}

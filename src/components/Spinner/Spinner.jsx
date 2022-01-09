@@ -5,7 +5,7 @@ import s from './Spinner.module.scss'
 const Spinner = React.memo(() => {
     return (
         <div className={s.wrapper}>
-            <HashLoader color='00BFFF' size={80}></HashLoader>
+            <HashLoader color='926EEA' size={80}></HashLoader>
         </div>
     )
 })

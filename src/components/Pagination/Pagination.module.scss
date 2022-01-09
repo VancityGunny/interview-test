@@ -4,20 +4,29 @@
     align-items: center;
     padding: 25px;
     gap: 10px;
-    .item, .itemActive{
+    .item, .itemActive, .paginationBtn{
         font-weight: 700;
         padding: 7px;
         border-radius: 5px;
         font-size: 20px;
+        color: #FF6C01;
         cursor: pointer;
         &:hover, &:focus{
             outline: none;
-            background-color: lightgrey;
+            background-color: #FFAD76;
+        }
+    }
+    .paginationBtn{
+        color:#3B1A89;
+        &:hover, &:focus{
+            outline: none;
+            background-color: lighten(#926EEA, 10);
         }
     }
     .itemActive{
         transform: scale(1.1);
-        background-color: grey;
+        color: #3B1A89;
+        background-color: lighten(#926EEA, 10);
     }
 
 }

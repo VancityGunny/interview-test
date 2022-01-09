@@ -2,13 +2,12 @@ import React from 'react'
 import Container from '../../hoc/Container/Container'
 import s from './Header.module.scss'
 
-const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputValue}, ref) => {
+const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputValue, btnHandler}, ref) => {
     return (
         <div className={s.header}>
             <Container>
                 <div className={s.wrapper}>
                     <div className={s.logo}>
-                    {/* В ТЗ не было указанно ничего про роутинг по этому его тут нет) */}
                         <a href="/" className={s.logoText}>Movie Catalog</a>
                     </div>
                     <div className={s.search}>
@@ -24,9 +23,8 @@ const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputV
                             />
                         </label>
                     </div>
-                    <div className={s.user}>
-                        <span></span>
-                        <p>Maxim Zavadski</p>
+                    <div className={s.btnContainer}>
+                        <button className={s.searchBtn} onClick={btnHandler}>Search</button>                        
                     </div>
                 </div>
             </Container>

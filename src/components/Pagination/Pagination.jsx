@@ -26,9 +26,9 @@ const Pagination = React.forwardRef( ({ films, pageHandler, currentPage }, ref) 
         return result
     }
     return <div className={s.container}>
-        {currentPage === 1 ? null : <div className={s.item} onClick={() => pageHandler(Math.abs(currentPage-1))}>Prev</div>}
+        {currentPage === 1 ? null : <div className={s.paginationBtn} onClick={() => pageHandler(Math.abs(currentPage-1))}>Prev</div>}
         {createPagination()}
-        {currentPage === pages ? null : <div className={s.item} onClick={() => pageHandler(Math.abs(currentPage+1))}>Next</div>}
+        {currentPage === pages ? null : <div className={s.paginationBtn} onClick={() => pageHandler(Math.abs(currentPage+1))}>Next</div>}
     </div>
 })
 
