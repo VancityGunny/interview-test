@@ -2,8 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding-bottom: 25px;
+    margin-top: 25px;
     gap: 10px;
+    .paginationContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
     .item, .itemActive, .paginationBtn{
         font-weight: 700;
         padding: 7px;
@@ -27,32 +34,31 @@
         transform: scale(1.1);
         color: #3B1A89;
         background-color: lighten(#926EEA, 10);
+        font-size: 20px;
     }
 
 }
 
 @media (max-width: 500px ){
     .container {
-        padding: 20px;
+        padding-bottom: 20px;
         gap: 5px;
-        .item{
-            font-size: 15px;
-            padding: 5px;
-        }
-        .itemActive{
-            transform: scale(1.05);
-        }
-    }
-}
-
-@media (max-width: 400px ){
-    .container {
-        gap: 5px;
-        .item{
-            font-size: 10px;
-        }
-        .itemActive{
-            transform: scale(1.05);
+        overflow-x: auto;
+        .paginationContainer{
+            gap: 10px;
+            .item{
+                font-size: 15px;
+                padding: 0px;
+            }
+            .pagination{
+                font-size: 15px;
+                padding: 5px;
+            }
+            .itemActive{
+                transform: scale(1.05);
+                font-size: 16px;
+                padding: 5px;
+            }
         }
     }
 }

@@ -1,35 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './Pagination.module.scss'
 
-const Pagination = React.forwardRef( ({ films, pageHandler, currentPage }, ref) => {
+const Pagination = ({ films, pageHandler, currentPage }) => {
+    const [prevPage, setPrevPage] = useState(1)
     const pages = Math.ceil(films / 10)
+
+    if (currentPage === 1 && prevPage !== 1) setPrevPage(1)
 
     const createPagination = () => {
         if (!films) return
 
+        let lastPage = currentPage
+        let [start, end] = [lastPage, prevPage+9]
         let result = []
-        let lastPage = ref.current
 
-        if(currentPage - ref.current >= 5){
-            lastPage = currentPage
-            ref.current = lastPage
-        }
+        if (lastPage + 9 >= pages) end = pages
 
+        if (lastPage - prevPage <= 4) {
+            start = prevPage
+        }else if(prevPage !== lastPage)(
+            setPrevPage(lastPage)
+        )
 
-        for (let i = lastPage; i <= lastPage+10; i++) {  
+        for (let i = start; i <= end; i++) {
             result.push(
-                <div key={i} onClick={() => pageHandler(i)} className={currentPage === i ? s.itemActive : s.item}>
+                <div
+                    key={i}
+                    onClick={() => pageHandler(i)}
+                    className={currentPage === i ? s.itemActive : s.item}
+                >
                     {i}
                 </div>
             )
         }
         return result
     }
-    return <div className={s.container}>
-        {currentPage === 1 ? null : <div className={s.paginationBtn} onClick={() => pageHandler(Math.abs(currentPage-1))}>Prev</div>}
-        {createPagination()}
-        {currentPage === pages ? null : <div className={s.paginationBtn} onClick={() => pageHandler(Math.abs(currentPage+1))}>Next</div>}
-    </div>
-})
+
+    return (
+        <div className={s.container}>
+            {currentPage === 1 ? null : (
+                <div
+                    className={s.paginationBtn}
+                    onClick={() => pageHandler(Math.abs(currentPage - 1))}
+                >
+                    Prev
+                </div>
+            )}
+            <div className={s.paginationContainer}>
+                {createPagination()}
+            </div>
+            {currentPage === pages ? null : (
+                <div
+                    className={s.paginationBtn}
+                    onClick={() => pageHandler(Math.abs(currentPage + 1))}
+                >
+                    Next
+                </div>
+            )}
+        </div>
+    )
+}
 
 export default Pagination

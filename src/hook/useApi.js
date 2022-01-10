@@ -2,7 +2,7 @@ import { api } from "../config/axios.config"
 
 export const useApi = (setLoadingState) => {
 
-    return async (searchName, page = '') => {
+    return async (searchName, page = 1) => {
         try {
             setLoadingState(true)
             

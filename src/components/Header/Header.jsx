@@ -8,7 +8,7 @@ const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputV
             <Container>
                 <div className={s.wrapper}>
                     <div className={s.logo}>
-                        <a href="/" className={s.logoText}>Movie Catalog</a>
+                        <a href="/" className={s.logoText} title='Logo'>Movie Catalog</a>
                     </div>
                     <div className={s.search}>
                         <label>
@@ -19,12 +19,12 @@ const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputV
                                 onChange={inputChangeHandler}
                                 onKeyDown={inputSubmitHandler}
                                 placeholder='movie title'
-                                required={true}
+                                title='Movie title'
                             />
                         </label>
                     </div>
                     <div className={s.btnContainer}>
-                        <button className={s.searchBtn} onClick={btnHandler}>Search</button>                        
+                        <button className={s.searchBtn} onClick={btnHandler} title='Search button'>Search</button>                        
                     </div>
                 </div>
             </Container>

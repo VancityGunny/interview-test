@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { useApi } from '../../hook/useApi'
 import { Header, FilmList } from '../../components/index'
 
@@ -10,31 +10,43 @@ const MoviePage = () => {
 
     const inputRef = useRef()
     const filmName = useRef()
-    const prevPage = useRef(1)
 
     const api = useApi(setLoading)
 
     const changeHandler = (e) => setSearchInputValue(e.target.value)
     
-    const tabHandler = async (tab) => {
+    const tabHandler = useCallback(async (tab) => {
         setPage(tab)
-        const data = await api(searchInputValue, tab)
+        const data = await api(filmName.current, tab)
         setData(data)
-    }
+        window.scrollTo({ top: 0 })
+    }, [api])
 
-    const submitHandler = async (e) => {
-        if(e.code !== 'Enter') return 
+    const inputSubmitHandler = async (e) => {
+        if(e.code !== "Enter") return
 
-        if(document.activeElement === inputRef.current){
-            const data = await api(searchInputValue, page)
-            filmName.current = searchInputValue
-            setData(data)
+        if(!searchInputValue) {
+            if(document.activeElement !== inputRef.current) inputRef.current.focus()
+            return
         }
 
+        if(document.activeElement === inputRef.current){
+            setPage(1)
+            const data = await api(searchInputValue)
+            filmName.current = searchInputValue
+            setData(data)
+            return
+        }
     }
 
-    const searchHandler = async () => {
-        const data = await api(searchInputValue, page)
+    const buttonSubmitHandler = async () => {
+        if(!searchInputValue) {
+            inputRef.current.focus()
+            return
+        }
+        setPage(1)
+
+        const data = await api(searchInputValue)
         filmName.current = searchInputValue
         setData(data)
     }
@@ -44,9 +56,9 @@ const MoviePage = () => {
             <Header 
                 ref={inputRef}
                 inputChangeHandler = {changeHandler}
-                inputSubmitHandler={submitHandler}
+                inputSubmitHandler={inputSubmitHandler}
                 inlutValue = {searchInputValue}
-                btnHandler={searchHandler}
+                btnHandler={buttonSubmitHandler}
             />
             <FilmList 
                 data={data}
@@ -54,7 +66,6 @@ const MoviePage = () => {
                 ref={filmName} 
                 pageHandler={tabHandler}
                 currentPage = {page}
-                prevPage={prevPage}
             />
         </>
     )
