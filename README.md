@@ -1,11 +1,11 @@
-# Film catalog 🎞
-*To search for a movie, enter a title in the ***"movie title"*** field. Then hit ***"enter"*** or the ***"search"*** button and voila! There are about 100,000 films for different tastes.*
+# HLT Tech Challenge 🎞
+search query as soon as you type
 
 ## **Running Locally**
 
 - ### Clone the repository  
 
-  - In the directory where you want to clone the project `git clone https://github.com/EvilTT/react-search-movie-catalog.git`
+  - In the directory where you want to clone the project `git clone https://github.com/VancityGunny/interview-test.git`
 
 - ### Installing dependencies
 
@@ -13,8 +13,6 @@
 
 - ### Start
 
-   - After installing all dependencies `npm start` or `yarn start`
+   - After installing all dependencies `npm start`
 
-Backend in this project - [**OMDb API**](http://www.omdbapi.com/)
-
-Actually it was a test task of one of the companies, but why shouldn't he be here😅
+Backend in this project - https://developers.themoviedb.org/3/search/search-movies
