@@ -23,8 +23,6 @@ const MoviePage = () => {
     }, [api])
 
     const inputSubmitHandler = async (e) => {
-        if(e.code !== "Enter") return
-
         if(!searchInputValue) {
             if(document.activeElement !== inputRef.current) inputRef.current.focus()
             return

@@ -8,13 +8,13 @@ export const useApi = (setLoadingState) => {
             
             const response = await api.get(null, {
                 params: {
-                    s: searchName,
+                    querhy: searchName,
                     page
                 }
             })
             setLoadingState(false)
 
-            if(!(response.statusText === 'OK')) throw new Error('Server error')
+            if(!(response.status === 200)) throw new Error('API Call error')
     
             return response.data
 

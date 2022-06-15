@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import s from './Pagination.module.scss'
 
-const Pagination = ({ films, pageHandler, currentPage }) => {
+const Pagination = ({ films, pageHandler, currentPage, pages }) => {
     const [prevPage, setPrevPage] = useState(1)
-    const pages = Math.ceil(films / 10)
-
+    
     if (currentPage === 1 && prevPage !== 1) setPrevPage(1)
 
     const createPagination = () => {

@@ -17,13 +17,13 @@ const Header = React.forwardRef(({inputChangeHandler, inputSubmitHandler, inputV
                                 type='text'
                                 value={inputValue}
                                 onChange={inputChangeHandler}
-                                onKeyDown={inputSubmitHandler}
+                                onKeyUp={inputSubmitHandler}
                                 placeholder='movie title'
                                 title='Movie title'
                             />
                         </label>
                     </div>
-                    <div className={s.btnContainer}>
+                    <div className={s.btnContainer} hidden={true}>
                         <button className={s.searchBtn} onClick={btnHandler} title='Search button'>Search</button>                        
                     </div>
                 </div>

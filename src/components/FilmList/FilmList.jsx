@@ -9,35 +9,37 @@ const FilmList = React.forwardRef(
 
         if (isLoading) return <Spinner />
 
-        if (data.length === 0) return null
+        if (data === undefined) return null
+        if (data.results === undefined) return null
 
         return (
             <div className={s.wrapper}>
                 <Container>
                     <SerchedInfo
                         filmName={ref.current}
-                        totalFilms={data.totalResults}
+                        totalFilms={data.total_results}
                     />
                     <div className={s.filmLists}>
-                        {data.Search.map((item) => {
+                        {data.results.map((item) => {
                             return (
                                 <FilmCard
-                                    key={item.imdbID + Date.now() + Math.random()}
-                                    id={item.imdbID}
-                                    year={item.Year}
-                                    name={item.Title}
-                                    type={item.Type}
+                                    key={item.id + Date.now() + Math.random()}
+                                    id={item.id}
+                                    year={item.release_date}
+                                    name={item.title}                                    
+                                    type="movie"
                                     image={
-                                        item.Poster === 'N/A'
+                                        item.poster_path === null
                                             ? process.env.REACT_APP_IMAGE_PLACEHOLDER_URL
-                                            : item.Poster
+                                            : "https://image.tmdb.org/t/p/w200"+item.poster_path    // TODO: put image path prefix in constant file, or configurable database entry
                                     }
                                 />
                             )
                         })}
                     </div>
                     <Pagination
-                        films={data.totalResults}
+                        films={data.total_results}
+                        pages={data.total_pages}
                         pageHandler={pageHandler}
                         currentPage={currentPage}
                     />
