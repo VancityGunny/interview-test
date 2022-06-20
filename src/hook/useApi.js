@@ -8,7 +8,7 @@ export const useApi = (setLoadingState) => {
             
             const response = await api.get(null, {
                 params: {
-                    querhy: searchName,
+                    query: searchName,
                     page
                 }
             })
